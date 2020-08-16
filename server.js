@@ -18,11 +18,24 @@ app.use("/peerjs", peerServer);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.get("/", (req, res) => {
-  res.redirect(`/${uuidv4()}`);
+  // res.redirect(`/${uuidv4()}`);
+  console.log(document);
+  res.render("login");
 });
-
-app.get("/:room", (req, res) => {
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+app.get("/chat/:room", (req, res) => {
   res.render("room", { roomId: req.params.room });
+});
+app.get("/login_submit", (req, res) => {
+  res.send(email + " " + pass);
+});
+app.get("/register_submit", (req, res) => {
+  res.send("This is a register page");
 });
 // connection to socket
 io.on("connection", (socket) => {
