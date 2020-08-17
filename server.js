@@ -19,13 +19,14 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.get("/", (req, res) => {
   // res.redirect(`/${uuidv4()}`);
-  console.log(document);
+  // console.log(document);
   res.render("login");
 });
 app.get("/register", (req, res) => {
   res.render("register");
 });
 app.get("/login", (req, res) => {
+  console.log(document);
   res.render("login");
 });
 app.get("/chat/:room", (req, res) => {
